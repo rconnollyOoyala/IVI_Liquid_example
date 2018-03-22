@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<FWCoreContainer bvi_xsd_version="1" contact_email="freewheel@lightworkers.com">{% for asset in assets %}
+<FWVideoDocument video_id="{{asset.embed_code}}">
+  <fwContentOwner>
+      <SelfContentOwner ></SelfContentOwner>
+  </fwContentOwner>
+<fwReplaceGroup>true</fwReplaceGroup>
+<fwTitles>
+  <titleItem>
+    <title><![CDATA[{{asset.name}}]]></title>
+    <titleType>Episode Title1</titleType>
+  </titleItem>{% for label in asset.labels %}{% if label.name == "Entertainment" or label.name == "Faith" or label.name == "Family" or label.name == "Lifestyle" %}
+  <titleItem>
+    <title>LW:Categories:{{label.name}}</title>
+    <titleType>Group</titleType>
+  </titleItem>{% endif %}{% if label.name == "Interviews" or label.name == "Just for Fun" or label.name == "Movies + TV" or label.name == "Music + Arts" %}
+  <titleItem>
+  <title>LW:SubCategories:{{label.name}}</title>
+    <titleType>Group</titleType>
+  </titleItem>{% endif %}{% if label.name == "Relationships + Parenting" or label.name == "Wellness + Growth" or label.name == "Leaders" or label.name == "Inspiration" %}
+  <titleItem>
+  <title>LW:SubCategories:{{label.name}}></title>
+    <titleType>Group</titleType>
+  </titleItem>{% endif %}{% if label.name == "Food + Travel" or label.name == "DIY + Trends" or label.name == "Relationships" or label.name == "Work + Money" or label.name == "Health + Beauty" %}
+  <titleItem>
+  <title>LW:SubCategories:{{label.name}}</title>
+    <titleType>Group</titleType>
+  </titleItem>{% endif %}{% if label.name == "Parenting" or label.name == "Marriage" or label.name == "Pets" or label.name == "Activities" %}
+  <titleItem>
+  <title>LW:SubCategories:{{label.name}}</title>
+    <titleType>Group</titleType>
+  </titleItem>{% endif %}{% if label.name == "I Struggle I Rise" or label.name == "The Golden Rule" or label.name == "Truthmark" or label.name == "Box of Butterflies" or label.name == "LightLists" or label.name == "I Love My Goofy Pet" or label.name == "Music Calling" or label.name == "Let Us Be Prankful" or label.name == "The Brekkie Series" or label.name == "Welcome to Brooklyn" or label.name == "#SquadHounds" or label.name == "Animal Classroom" or label.name == "Giftable" or label.name == "Kara + Eden" or label.name == "An Ode To" or label.name == "Dad Does Lunch" or label.name == "Say Something Profound" or label.name == "Get Read" or label.name == "Men and Women from the Bible" or label.name == "Scavenger Hunt Friday" or label.name == "Can-Do-Able" or label.name == "Tough But Fair" or label.name == "Very Good Shorts" or label.name == "Celebrity Interviews" or label.name == "You Deserve a Treat" or label.name == "37 Seconds of Good News" or label.name == "A Taste of Grace" or label.name == "In My Day" or label.name == "Office Guinea Pigs" or label.name == "Welcome to Adulting" or label.name == "The Good Race" or label.name == "Craftitude" or label.name == "Totally Accurate History" or label.name == "Stay Coached" or label.name == "Role Modeling" or label.name == "Spotlight Good" or label.name == "Isn't That Spectacular"%}
+  <titleItem>
+  <title>LW:Series:{{label.name}}</title>
+    <titleType>Series</titleType>
+  </titleItem>{% endif %}{% if label.name == "Bethel" or label.name == "Christian Media Corporation" or label.name == "Faithwire" or label.name == "Greatist" or label.name == "LightWorkers" or label.name == "RightThisMinute" %}
+  <titleItem>
+  <title>LW:Owner:{{label.name}}</title>
+    <titleType>Group</titleType>
+  </titleItem>{% endif %}{% endfor %}
+</fwTitles>
+<fwDescriptions>
+  <descriptionItem>
+    <description>{{asset.description}}</description>
+    <descriptionType>Episode</descriptionType>
+  </descriptionItem>
+</fwDescriptions>
+<fwDateAvailable>
+      <dateAvailableStart>{{asset.flight_start_time}}</dateAvailableStart>
+      <dateAvailableEnd>{{asset.flight_end_time}}</dateAvailableEnd>
+</fwDateAvailable>
+<fwDuration>{{asset.duration | divided_by: 1000}}</fwDuration>
+</FWVideoDocument>{% endfor %}
+</FWCoreContainer>
